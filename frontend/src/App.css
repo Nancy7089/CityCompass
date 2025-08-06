@@ -1,0 +1,388 @@
+/* =========================
+   SHELL & HEADER (FLOATING)
+   ========================= */
+.appLayout{
+  display:flex;
+  min-height:100vh;
+  width:100%;
+  overflow:hidden;
+  background:#fff;
+}
+.mainStage{
+  position:relative;
+  flex:1;
+  min-width:0;
+}
+
+/* Map fills entire main area (right up to the sidebar) */
+.mapUnderlay{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+
+/* Floating header over the map */
+.floatHeader{
+  position:sticky; /* stays at top */
+  top:0;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 18px;
+  /* Transparent background - no backdrop filter or background */
+}
+.brand{ font-size:22px; color:#374151; font-weight:600; }
+.avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,#c026d3,#2563eb);
+}
+
+/* =========================
+   OVERLAYS (HERO / CHAT)
+   ========================= */
+.centerOverlay{
+  position:absolute; inset:0;
+  display:flex; align-items:flex-start; justify-content:center;
+  padding-top:90px;           /* room for header */
+  z-index:9;
+}
+.rightOverlay{
+  position:absolute; inset:0;
+  display:flex; justify-content:flex-end; align-items:stretch;
+  padding:100px 18px 18px 18px;/* room for header */
+  z-index:9;
+}
+
+/* Glass cards (hero + chat) */
+.glassCard{
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.28);
+  border:1px solid rgba(255,255,255,0.45);
+  border-radius:24px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+.heroCard{ width:min(900px, 92vw); padding:16px 10px 10px; }
+.chatCard{
+  width:min(720px, 48vw);
+  height: calc(100% - 130px);
+  overflow:hidden;
+}
+
+/* Transition (hero -> chat) */
+.heroOut{ animation: heroFadeSlide .5s ease forwards; }
+@keyframes heroFadeSlide{
+  0%   { transform: translateY(0) scale(1); opacity:1; }
+  100% { transform: translateY(-12px) scale(.98); opacity:0; }
+}
+
+/* =========================
+   HERO CONTENT (inside LandingSearch)
+   ========================= */
+.hero-wrap{ width:100%; }
+.hero-title{ margin:20px; font-size:56px; color:#c4c7c5; font-weight:500; padding:15px; }
+.hero-gradient{
+  background: -webkit-linear-gradient(16deg, rgb(196,21,5), rgb(104,6,190));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.hero-sub{ margin:-10px 35px 10px 35px; font-size:28px; color:#8e9391; font-weight:600; }
+
+.hero-cards{
+  display:grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  gap:16px; padding:0 20px 24px 20px;
+}
+.hero-card{
+  min-height:180px; padding:14px;
+  background-color: rgba(240,244,249,0.85);
+  border:1px solid rgba(255,255,255,0.45);
+  border-radius:16px; position:relative; transition: background-color .2s ease;
+}
+.hero-card:hover{ background-color: rgba(223,228,234,0.92); }
+.hero-card p{ color:#585858; font-size:16px; line-height:1.4; }
+.hero-dot{ width:34px;height:34px;border-radius:50%; background:#fff; position:absolute; right:10px; bottom:10px; }
+
+.hero-input-row{ width:100%; max-width:900px; padding:0 20px 16px 20px; margin:0 auto; }
+.hero-input{
+  display:flex; align-items:center; gap:12px;
+  background-color: rgba(240,244,249,0.95);
+  padding:10px 16px; border-radius:50px; border:1px solid rgba(0,0,0,0.04);
+}
+.hero-input input{
+  flex:1; background:transparent; border:none; outline:none; font-size:18px; padding:8px;
+}
+.hero-send{
+  width:38px;height:38px;border-radius:50%; border:none; cursor:pointer;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+}
+.hero-note{ font-size:12px; margin-top:10px; text-align:center; color:#6b7280; }
+
+/* =========================
+   SIDEBAR (ChatGPT-like)
+   ========================= */
+.cc-sidebar{
+  height:100vh;
+  /* iOS-style glassmorphism */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  /* Add subtle noise texture for premium feel */
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+  background-size: 20px 20px, 100% 100%;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  padding:16px 12px;
+}
+.sidebar-collapsed{ width:4rem; }
+.sidebar-expanded{ width:16rem; }
+
+/* Hamburger tile */
+.cc-side-top{ display:flex; align-items:center; justify-content:flex-start; height:28px; }
+.cc-menu-btn{ border:none; background:transparent; padding:4px; cursor:pointer; }
+.cc-menu-icon{
+  width:22px; height:22px; border-radius:4px;
+  background:linear-gradient(135deg,#3b82f6,#1d4ed8);
+  display:flex; flex-direction:column; justify-content:center; gap:2px; padding:3px 4px;
+}
+.cc-menu-icon span{ height:2px; width:100%; background:#eef4ff; display:block; border-radius:2px; }
+
+/* New Chat pill */
+.cc-newchat{
+  display:flex; align-items:center; gap:10px;
+  padding:12px 14px; border-radius:14px; border:1px solid #e7ecf4;
+  background:#ffffffcc; cursor:pointer;
+  font-weight:500; color:#4b5563;
+  transition: background .15s ease, transform .15s ease;
+}
+.cc-newchat:hover{ background:#fff; transform: translateX(1px); }
+.cc-newchat-plus{
+  width:24px; height:24px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  background:#eef2ff; color:#6474ff; font-size:18px; line-height:1;
+}
+
+/* Recent + bottom actions */
+.cc-section{ display:flex; flex-direction:column; gap:8px; }
+.cc-section-title{ font-size:14px; color:#1f2937; margin:6px 2px; font-weight:600; }
+.cc-recent-item{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 10px; border-radius:10px; color:#111827;
+  background:transparent; border:none; text-align:left; cursor:pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+.cc-recent-item:hover{ background:#eaf0fb; transform: translateX(1px); }
+.cc-recent-item svg{ color:#111827; }
+
+.cc-side-bottom{
+  margin-top:auto;
+  display:flex; flex-direction:column; gap:8px;
+}
+.cc-nav-item{
+  display:flex; align-items:center; gap:10px;
+  padding:10px; border-radius:10px; background:transparent; border:none;
+  color:#111827; cursor:pointer; text-align:left;
+  transition: background .15s ease, transform .15s ease;
+}
+.cc-nav-item:hover{ background:#eaf0fb; transform: translateX(1px); }
+.cc-nav-item svg{ min-width:18px; }
+
+/* Collapsed text hiding */
+.sidebar-collapsed .cc-newchat span,
+.sidebar-collapsed .cc-section-title,
+.sidebar-collapsed .cc-recent-item span,
+.sidebar-collapsed .cc-nav-item span{ display:none; }
+.sidebar-collapsed .cc-newchat{ justify-content:center; }
+.sidebar-collapsed .cc-recent-item,
+.sidebar-collapsed .cc-nav-item{ justify-content:center; }
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 900px){
+  .rightOverlay{ padding:90px 12px 12px 12px; }
+  .chatCard{ width:96vw; height: calc(100% - 110px); }
+}
+@media (max-width: 640px){
+  .hero-title{ font-size:36px; }
+}
+/* --- LEFT overlay next to sidebar --- */
+.leftOverlay{
+  position:absolute;
+  top:90px;                 /* below header */
+  left:16px;                /* small gap from sidebar edge */
+  bottom:80px;              /* increased bottom margin to make components shorter */
+  z-index:9;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  pointer-events:none;      /* overlay container doesn't block the map */
+  padding-top:60px;         /* push glass cards lower */
+}
+
+/* --- ROUTE INFO overlay beside chat --- */
+.routeInfoOverlay{
+  position:absolute;
+  top:90px;                 /* below header */
+  left:620px;               /* beside the chat interface */
+  bottom:80px;
+  z-index:9;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  pointer-events:none;
+  padding-top:60px;         /* push glass cards lower */
+}
+
+/* Cards themselves accept interaction */
+.leftOverlay .glassCard{ pointer-events:auto; }
+
+/* Keep the hero/chat a readable width on the left */
+.heroCard{ width:min(720px, 40vw); }
+.chatCard{
+  width:min(580px, 35vw);
+  height: calc(100% - 0px);
+  overflow:hidden;
+}
+.routeInfoCard{
+  width:min(280px, 25vw);
+  padding: 16px;
+  pointer-events:auto;
+}
+
+/* Tweak header to float over map */
+.floatHeader{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 18px;
+  /* Transparent background - no glass effects */
+}
+
+/* Simple slide/fade when hero disappears */
+.heroOut{ animation: heroFadeSlide .5s ease forwards; }
+@keyframes heroFadeSlide{
+  0%   { transform: translateY(0) scale(1); opacity:1; }
+  100% { transform: translateY(-10px) scale(.98); opacity:0; }
+}
+
+/* Responsive: on small screens, widen the panel */
+@media (max-width: 900px){
+  .leftOverlay{ left:12px; right:12px; }
+  .heroCard{ width: calc(100vw - 60px); }
+  .chatCard{ width: calc(100vw - 60px); height: calc(100% - 0px); }
+  .routeInfoOverlay{ left:12px; top:auto; bottom:12px; }
+  .routeInfoCard{ width: calc(100vw - 60px); }
+}
+/* ===== Route planner (inside the hero) ===== */
+.route-bar{
+  width:100%;
+  max-width:900px;
+  margin: 6px auto 0;
+  padding: 14px;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  backdrop-filter: blur(8px);
+}
+
+.route-fields{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  margin-bottom:12px;
+}
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.field-tag{
+  font-size:13px;
+  color:#4b5563;
+  font-weight:600;
+}
+.field input{
+  width:100%;
+  height:44px;
+  border-radius:12px;
+  padding:0 14px;
+  border:1px solid rgba(0,0,0,0.08);
+  background:#fff;
+  outline:none;
+  font-size:16px;
+}
+
+.route-controls{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+.chips{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.chip{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  background:#fff;
+  color:#374151;
+  font-weight:500;
+  cursor:pointer;
+  transition: all .15s ease;
+}
+.chip:hover{ transform: translateY(-1px); }
+.chip.active{
+  background:#eef2ff;
+  border-color:#c7d2fe;
+  color:#334155;
+}
+
+.planner{ margin-left:auto; }
+.plan-btn{
+  height:44px;
+  padding:0 18px;
+  border:none;
+  border-radius:14px;
+  background: linear-gradient(135deg,#647cff,#6a5cff);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow: 0 8px 24px rgba(100,124,255,0.25);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.plan-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 28px rgba(100,124,255,0.3); }
+
+.suggests{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.pill{
+  padding:8px 12px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:999px;
+  color:#4b5563;
+  cursor:pointer;
+}
+
+/* Responsive tweaks */
+@media (max-width: 820px){
+  .route-fields{ grid-template-columns: 1fr; }
+  .planner{ width:100%; }
+  .plan-btn{ width:100%; }
+}
