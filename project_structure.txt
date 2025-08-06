@@ -1,0 +1,97 @@
+.
+├── .DS_Store
+├── .gitignore
+├── backend
+│   ├── .DS_Store
+│   ├── package-lock.json
+│   ├── package.json
+│   └── src
+│       ├── data
+│       │   └── mockTransportData.js
+│       ├── models
+│       ├── routes
+│       ├── server.js
+│       └── services
+│           ├── mockAIService.js
+│           ├── mockJourneyPlanner.js
+│           └── ollamaService.js
+├── compass_icon.png
+├── frontend
+│   ├── .DS_Store
+│   ├── .env
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── public
+│   │   ├── compass_icon.png
+│   │   └── vite.svg
+│   ├── README.md
+│   ├── src
+│   │   ├── .DS_Store
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── assets
+│   │   │   ├── .DS_Store
+│   │   │   ├── assets.js
+│   │   │   ├── bulb_icon.png
+│   │   │   ├── code_icon.png
+│   │   │   ├── compass_icon.png
+│   │   │   ├── gallery_icon.png
+│   │   │   ├── gallery_icon2.png
+│   │   │   ├── gemini_icon.png
+│   │   │   ├── history_icon.png
+│   │   │   ├── menu_icon.png
+│   │   │   ├── message_icon.png
+│   │   │   ├── mic_icon.png
+│   │   │   ├── plus_icon.png
+│   │   │   ├── question_icon.png
+│   │   │   ├── react.svg
+│   │   │   ├── send_icon.png
+│   │   │   ├── setting_icon.png
+│   │   │   ├── user_icon.png
+│   │   │   └── youtube_icon.png
+│   │   ├── components
+│   │   │   ├── ChatInput.jsx
+│   │   │   ├── ChatInterface.jsx
+│   │   │   ├── common
+│   │   │   │   └── Icon.jsx
+│   │   │   ├── GoogleMap.jsx
+│   │   │   ├── LandingSearch.jsx
+│   │   │   ├── LoadingBubble.jsx
+│   │   │   ├── MessageBubble.jsx
+│   │   │   ├── sidebar
+│   │   │   │   ├── NavigationItems.jsx
+│   │   │   │   ├── RecentChatsList.jsx
+│   │   │   │   └── Sidebar.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── UnifiedSearchChat.jsx
+│   │   ├── constants
+│   │   │   └── sidebarConstants.js
+│   │   ├── hooks
+│   │   │   ├── useChatSocket.js
+│   │   │   ├── useLocationService.js
+│   │   │   ├── useMessages.js
+│   │   │   ├── useRecentChats.js
+│   │   │   └── useRouteHistory.js
+│   │   ├── index.css
+│   │   ├── main.jsx
+│   │   ├── services
+│   │   │   └── locationService.js
+│   │   ├── styles
+│   │   │   └── glassmorphism.js
+│   │   ├── user_icon.png
+│   │   └── utils
+│   │       ├── chatTitleGenerator.js
+│   │       ├── locationParser.js
+│   │       └── timeUtils.js
+│   ├── tailwind.config.js
+│   └── vite.config.js
+├── package-lock.json
+├── package.json
+├── project_structure.txt
+└── README.md
+
+19 directories, 76 files

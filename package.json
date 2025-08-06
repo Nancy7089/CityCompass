@@ -1,0 +1,36 @@
+{
+  "name": "urban-mobility-ai",
+  "version": "1.0.0",
+  "description": "AI-powered urban mobility coordination system with Google Maps and Ollama integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "dev": "concurrently --names \"BACKEND,FRONTEND\" --prefix-colors \"red,blue\" \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SahilKumar75/Urban-Mobility-Coordination.git"
+  },
+  "keywords": [
+    "urban-mobility",
+    "ai",
+    "ollama",
+    "google-maps",
+    "transportation",
+    "chatbot"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SahilKumar75/Urban-Mobility-Coordination/issues"
+  },
+  "homepage": "https://github.com/SahilKumar75/Urban-Mobility-Coordination#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
